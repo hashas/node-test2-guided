@@ -22,10 +22,19 @@ server.use((err, req, res, next) => {
 	})
 })
 
+// stop the server starting when importing server obejct
+// into test file, module.parent will be truthy if index.js
+// (being the 'start' file specified in package.json) is
+// imported to another file because then the latter file
+// becomes the parent of index.js (when we run 'npm test')
+
+// alternative method is to put above code in a separate
+// file and import that into test file without server.listen()
 if (!module.parent) {
 	server.listen(port, () => {
 		console.log(`Running at http://localhost:${port}`)
 	})
 }
 
+// export server object so we can import it into test file
 module.exports = server

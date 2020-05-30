@@ -1,3 +1,9 @@
+// test the functions in hobbits-model.js, as these functions
+// interact with db these are more integration tests than unit tests
+
+// running jest with "--verbose" flag in package.json gives us test details
+// such as which tests ran and how long they took
+
 const db = require("../data/config")
 const hobbitsModel = require("./hobbits-model")
 
